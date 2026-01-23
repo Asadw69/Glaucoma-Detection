@@ -1,191 +1,123 @@
-# Glaucoscan.ai
+Glaucare
 
-**Open-source full stack AI tool for early glaucoma detection from fundus images, optimized for mobile and low-resource clinics.**
+An open-source full stack AI system for early glaucoma detection from retinal fundus images, designed for mobile access and low-resource clinical environments.
 
-![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Stars](https://img.shields.io/github/stars/KrishNachnani/Glaucoma?style=social)
-![Downloads](https://img.shields.io/github/downloads/KrishNachnani/glaucoma-detector-ai/total)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15567617.svg)](https://doi.org/10.5281/zenodo.15567617)
+Key Features
+
+AI-based glaucoma prediction using a lightweight neural network
+
+Fundus image upload through a modern web interface
+
+Backend built with FastAPI for preprocessing, training, and inference
+
+Optimized for energy efficiency and low hardware requirements
+
+Modular architecture suitable for research and deployment
+
+Docker support for easy setup
+
+Project Overview
+
+Glaucare is a full-stack medical AI project focused on early glaucoma screening using retinal fundus images.
+
+The system is divided into two major components:
+
+Glaucare API – A FastAPI-based backend responsible for image processing, feature extraction, and prediction
+
+Glaucare UI – A frontend application built with Next.js for uploading images and viewing results
+
+The project is intended for academic use, experimentation, and prototype-level clinical support tools.
+
+System Architecture
+Retinal Fundus Image
+        ↓
+Feature Extraction (CNN Backbone)
+        ↓
+2048-Dimensional Feature Vector
+        ↓
+MLP Classifier
+        ↓
+Prediction Output
+   (Glaucoma / Normal)
+
+Processing Pipeline
+Raw Images
+   ↓
+Data Augmentation
+   ↓
+Feature Extraction
+   ↓
+Feature Scaling
+   ↓
+Class Balancing
+   ↓
+Model Training
+   ↓
+Trained Prediction Model
+
+Folder Structure
+Glaucare/
+├── glaucare-api/        # FastAPI backend
+├── glaucare-ui/         # Next.js frontend
+├── README.md            # Project documentation
 
 
+Each submodule contains its own setup instructions and configuration details.
 
----
-
-## Key Features
-
-- Glaucoma prediction using lightweight MLP architecture
-- Supports fundus image upload via modern UI (Next.js)
-- FastAPI backend with modular components for preprocessing, training, and inference
-- Energy-efficient model optimized for low-resource clinics
-- Docker-ready for fast deployment
-
----
-
-## Live Demo
-
-Try it: [glaucoscan.ai](https://glaucoscan.ai)
-Watch the video demo: [YouTube Link](https://youtu.be/c6hR0KTX86Q)
-
----
-## Download Inference Demo
-
-Grab the latest lightweight package for local prediction:
-
-[![Download](https://img.shields.io/badge/Download-GlaucoScan%20v1.1-blue?logo=github)](https://github.com/KrishNachnani/glaucoma-detector-ai/releases/download/v1.1/glaucoscan_v1.1.zip)
-
----
-
-## Table of Contents
-1. Project Overview  
-2. System Architecture  
-3. Process Flow  
-4. Folder Structure  
-5. Quick Start  
-6. More Details  
-7. Contact  
-
----
-
-## Project Overview
-
-This repository combines two key components:
-
-- `glaucoscan-API`: FastAPI-based backend for image processing and classification.  
-- `glaucoscan-UI`: Next.js frontend for uploading images, getting predictions, and user interaction.  
-
-### Core Model Architecture
-
-```mermaid
-flowchart LR
-    A[Retinal Image] --> B[ResNet50\nFeature Extractor]
-    B --> C[Feature Vector\n2048-dim]
-    C --> D[MLP Classifier]
-    D --> E{Prediction}
-    E -->|Yes| F[Glaucoma]
-    E -->|No| G[No Glaucoma]
-    style B fill:#f9d77e,stroke:#333,stroke-width:2px
-    style D fill:#a1de93,stroke:#333,stroke-width:2px
-```
-
----
-
-## Process Flow
-
-```mermaid
-graph TD
-    A[Raw Retinal Images] --> B[Data Augmentation]
-    B --> C[Feature Extraction]
-    A --> C
-    C --> D[Feature Scaling]
-    D --> E[Feature Selection]
-    E --> F[Class Balancing\nSMOTE]
-    F --> G[Grid Search\nHyperparameter Tuning]
-    G --> H[Model Training]
-    H --> I[Trained Model]
-    style B fill:#f9d77e,stroke:#333,stroke-width:2px
-    style F fill:#a1de93,stroke:#333,stroke-width:2px
-```
-
----
-## Folder Structure
-
-```
-Glaucoma/
-├── glaucoscan-API/     # Backend: FastAPI service
-├── glaucoscan-UI/      # Frontend: Next.js application
-├── README.md           # This file
-```
-
-Each subproject includes its own `README.md` with setup instructions, configuration options, and advanced usage.
-
----
-
-## Quick Start
-
-### Backend (API)
-
-```bash
-cd glaucoscan-API
+Quick Start Guide
+Backend (API)
+cd glaucare-api
 pip install -r requirements.txt
 python app.py
-# API docs: http://localhost:8236/docs
-```
 
-### Frontend (UI)
 
-```bash
-cd glaucoscan-UI
+API documentation will be available at:
+
+http://localhost:8236/docs
+
+Frontend (UI)
+cd glaucare-ui
 npm install
 npm run dev
-# Access app at http://localhost:3000
-```
 
-### Docker (Optional)
 
-Each component has its own `run-docker.sh` script:
+Access the application at:
 
-```bash
-cd glaucoscan-API && ./run_docker.sh
-cd glaucoscan-UI  && ./run-docker.sh
-```
+http://localhost:3000
 
-### Run Local Prediction Script
-
-You can test the trained model locally without running the full API or frontend.
-
-```bash
-cd glaucoscan-API
+Local Prediction (Without UI)
+cd glaucare-api
 pip install -r requirements.txt
 python predict.py
-```
-
-This uses example_input.csv, a sample 2048-dimensional feature vector, and outputs:
-
-Prediction: Glaucoma (class 0)
-
----
-
-## More Details
-
-- **API Documentation**: See `glaucoscan-API/README.md`  
-- **UI Documentation**: See `glaucoscan-UI/README.md`
-
----
-
-## Contact
-
-For questions or support, reach out at:
-
-- **GitHub Issues**: https://github.com/KrishNachnani/Glaucoma/issues
-
----
-
-## Citation
-
-This software release is archived and citable via Zenodo.
-
-[![DOI](https://zenodo.org/badge/DOI/10.1109/ICMLA58977.2023.00307.svg)](https://doi.org/10.1109/ICMLA58977.2023.00307)
-
-If you use this work in your research, please cite the following papers:
-
-1. **Energy Efficient Learning Algorithms for Glaucoma Diagnosis**  
-   *Proceedings of the 22nd IEEE International Conference on Machine Learning and Applications (ICMLA 2023)*  
-   Krish Nachnani  
-   DOI: [10.1109/ICMLA58977.2023.00307](https://doi.org/10.1109/ICMLA58977.2023.00307)
-
-2. **Leveraging GAN-based Data Augmentation for Advanced Glaucoma Diagnostics**  
-   In *Recent Advances in Deep Learning Applications*, CRC Press, Taylor & Francis Group.  
-   Krish Nachnani  
-   [Available online](https://www.taylorfrancis.com/books/edit/10.1201/9781003570882/recent-advances-deep-learning-applications-uche-onyekpe-vasile-palade-arif-wani)
-   *(Extended version of the ICMLA 2023 paper, with additional results and discussion.)*
-
-3. **GlaucoScan v1.1: Lightweight AI for Early Glaucoma Detection (Software)**  
-   Krish Nachnani  
-   Zenodo, 2025. DOI: [10.5281/zenodo.15567617](https://doi.org/10.5281/zenodo.15567617)
 
 
----
+This script loads a sample feature vector and outputs a glaucoma prediction result.
 
-## License
+Use Cases
 
-This project is licensed under the MIT License.
+Academic research and experimentation
+
+Learning project for medical AI pipelines
+
+Prototype screening tool for ophthalmology studies
+
+Demonstration of full-stack AI deployment
+
+⚠️ This project is not intended for direct clinical diagnosis without professional medical validation.
+
+Contributors / Owners
+
+Asad Siddiqui
+
+Mohd Sameer
+
+Mohd Akib
+
+Contact
+
+For queries, improvements, or collaboration requests, please use the repository’s issue tracker.
+
+Disclaimer
+
+This project is developed for educational and research purposes only.
+It should not be used as a replacement for professional medical diagnosis or treatment.
