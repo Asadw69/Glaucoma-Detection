@@ -79,25 +79,24 @@ Each submodule contains its own setup instructions and configuration details.
 
 ### Backend (API)
 
-```bash
 cd glaucare-api
 pip install -r requirements.txt
 python app.py
 
-API documentation will be available at:
+
+## API documentation will be available at:
 http://localhost:8236/docs
 
-Frontend (UI)
+## Frontend (UI)
 cd glaucare-ui
 npm install
 npm run dev
 
-
-Access the application at:
+## Access the application at:
 
 http://localhost:3000
 
-Local Prediction (Without UI)
+## Local Prediction (Without UI)
 cd glaucare-api
 pip install -r requirements.txt
 python predict.py
@@ -105,7 +104,7 @@ python predict.py
 
 This script loads a sample feature vector and outputs a glaucoma prediction result.
 
-Use Cases
+## Use Cases
 
 Academic research and experimentation
 
@@ -115,7 +114,7 @@ Prototype screening tool for ophthalmology studies
 
 Demonstration of full-stack AI deployment
 
-⚠️ This project is not intended for direct clinical diagnosis without professional medical validation.
+## ⚠️ This project is not intended for direct clinical diagnosis without professional medical validation.
 
 Contributors / Owners
 
