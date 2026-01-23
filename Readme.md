@@ -30,3 +30,99 @@ The project is intended for academic use, experimentation, and prototype-level c
 
 ## System Architecture
 
+Retinal Fundus Image
+↓
+Feature Extraction (CNN Backbone)
+↓
+2048-Dimensional Feature Vector
+↓
+MLP Classifier
+↓
+Prediction Output
+(Glaucoma / Normal)
+
+
+---
+
+## Processing Pipeline
+
+Raw Images
+↓
+Data Augmentation
+↓
+Feature Extraction
+↓
+Feature Scaling
+↓
+Class Balancing
+↓
+Model Training
+↓
+Trained Prediction Model
+
+
+---
+
+## Folder Structure
+
+Glaucare/
+├── glaucare-api/ # FastAPI backend
+├── glaucare-ui/ # Next.js frontend
+├── README.md # Project documentation
+
+
+Each submodule contains its own setup instructions and configuration details.
+
+---
+
+## Quick Start Guide
+
+### Backend (API)
+
+```bash
+cd glaucare-api
+pip install -r requirements.txt
+python app.py
+
+API documentation will be available at:
+http://localhost:8236/docs
+
+Frontend (UI)
+cd glaucare-ui
+npm install
+npm run dev
+
+
+Access the application at:
+
+http://localhost:3000
+
+Local Prediction (Without UI)
+cd glaucare-api
+pip install -r requirements.txt
+python predict.py
+
+
+This script loads a sample feature vector and outputs a glaucoma prediction result.
+
+Use Cases
+
+Academic research and experimentation
+
+Learning project for medical AI pipelines
+
+Prototype screening tool for ophthalmology studies
+
+Demonstration of full-stack AI deployment
+
+⚠️ This project is not intended for direct clinical diagnosis without professional medical validation.
+
+Contributors / Owners
+
+Asad Siddiqui 
+
+Mohd Sameer
+
+Mohd Akib
+
+Contact - @asadsiddiqui7865@gmail.com
